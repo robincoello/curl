@@ -1006,6 +1006,10 @@ static CURLcode operate_do(struct GlobalConfig *global,
           if(config->tr_encoding)
             my_setopt(curl, CURLOPT_TRANSFER_ENCODING, 1L);
 
+          /* new in libcurl 7.64.0 */
+          if(config->http09_allowed)
+            my_setopt(curl, CURLOPT_HTTP09, 1L);
+
         } /* (built_in_protos & CURLPROTO_HTTP) */
 
         my_setopt_str(curl, CURLOPT_FTPPORT, config->ftpport);
